@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <header-bar/>
+    <layout-header-bar/>
     <el-main>
       <Nuxt/>
     </el-main>

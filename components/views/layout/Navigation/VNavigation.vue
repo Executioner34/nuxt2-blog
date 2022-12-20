@@ -6,7 +6,7 @@
 
 <script>
 /**
- * @module components/views/Navigation/Navigation.vue
+ * @module components/views/layout/Navigation/Navigation.vue
  * @desc Навигация для сайта
  * @vue-prop {type} name - desc
  * @vue-data {type} name - desc

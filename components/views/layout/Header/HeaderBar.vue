@@ -1,12 +1,12 @@
 <template>
   <el-header>
-    <NavigationVNavigation/>
+    <layout-navigation-v-navigation/>
   </el-header>
 </template>
 
 <script>
 /**
- * @module components/views/Header/HeaderBar.vue
+ * @module components/views/layout/Header/HeaderBar.vue
  * @desc "Шапка" сайта
  * @vue-prop {type} name - desc
  * @vue-data {type} name - desc
