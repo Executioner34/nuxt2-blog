@@ -1,7 +1,11 @@
 <template>
-  <div>
-    <Nuxt/>
-  </div>
+  <el-container>
+    <header-bar/>
+    <el-main>
+      <Nuxt/>
+    </el-main>
+    <el-footer/>
+  </el-container>
 </template>
 
 <script>

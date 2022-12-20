@@ -19,11 +19,19 @@ export default {
   },
   css: [
     'element-ui/lib/theme-chalk/index.css',
+    '~/assets/scss/global.scss',
   ],
   plugins: [
     '@/plugins/globals',
   ],
-  components: true,
+  components: {
+    dirs: [
+      '~/components',
+      '~/components/common',
+      '~/components/views',
+      '~/components/general',
+    ],
+  },
   buildModules: [
   ],
   modules: [
