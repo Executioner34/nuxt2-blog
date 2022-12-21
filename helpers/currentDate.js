@@ -3,6 +3,6 @@
  * @desc - возвращает текущую дату в виде строки
  */
 
-const currentDate = () => new Date().toLocaleDateString();
+const currentDate = () => new Date().toLocaleString();
 
 export default currentDate;
