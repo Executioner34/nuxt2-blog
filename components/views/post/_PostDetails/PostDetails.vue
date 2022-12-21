@@ -31,20 +31,36 @@
        ut vel vero voluptate voluptates?
        Magnam.</p>
    </main>
-   <footer></footer>
+   <footer>
+     <div
+       v-if="true"
+       class="comments">
+       <TheComment
+         v-for="comment in 4"
+         :key="comment"
+         :comment="comment" />
+     </div>
+    <div
+      v-else
+      class="x-text-center">Комментариев нет</div>
+   </footer>
  </article>
 </template>
 
 <script>
 import currentDate from '@/helpers/currentDate';
+import TheComment from '@/components/views/post/_PostDetails/TheComment/TheComment.vue';
 /**
- * @module components/views/post/PostDetails/PostDetails.vue
+ * @module components/views/post/_PostDetails/PostDetails.vue
  * @desc компонент детальной информации поста
  * @vue-computed {String} currentDate - возвращает текущую дату в виде строки
  */
 
 export default {
   name: 'PostDetailsPage',
+  components: {
+    TheComment,
+  },
   computed: {
     currentDate() {
       return currentDate();
