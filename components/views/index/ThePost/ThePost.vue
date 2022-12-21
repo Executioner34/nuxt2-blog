@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import currentDate from '~/helpers/currentDate';
+
 /**
  * @module components/views/index/ThePost/ThePost.vue
  * @desc компонент поста
@@ -32,12 +34,12 @@ export default {
   name: 'PostIndex',
   methods: {
     openPost() {
-
+      this.$router.push('/post/1');
     },
   },
   computed: {
     currentDate() {
-      return new Date().toLocaleDateString();
+      return currentDate();
     },
   },
 };
