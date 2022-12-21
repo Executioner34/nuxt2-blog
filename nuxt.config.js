@@ -18,6 +18,7 @@ export default {
     color: '#fff',
   },
   css: [
+    'normalize.css/normalize.css',
     'element-ui/lib/theme-chalk/index.css',
   ],
   plugins: [
