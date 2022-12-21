@@ -2,7 +2,7 @@
   <div>
     <el-container>
       <el-header>
-        <LayoutNavigation/>
+        <LayoutTheNavigation/>
       </el-header>
       <el-main>
         <Nuxt/>
@@ -15,7 +15,7 @@
 <script>
 
 export default {
-  name: 'layoutDefault',
+  name: 'DefaultLayout',
 };
 </script>
 

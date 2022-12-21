@@ -1,16 +1,13 @@
 <template>
-  <nav class="navigation">
+  <nav class="navigation-layout-component">
     <h1 class="navigation-title">SSR Blog</h1>
   </nav>
 </template>
 
 <script>
 /**
- * @module components/views/layout/Navigation.vue
+ * @module components/views/layout/TheNavigation/TheNavigation.vue
  * @desc компонент навигации сайта
- * @vue-prop {type} name - desc
- * @vue-data {type} name - desc
- * @vue-computed {type} name - desc
  */
 export default {
   name: 'NavigationLayout',
@@ -18,7 +15,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.navigation {
+.navigation-layout-component {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,7 +23,4 @@ export default {
   border-bottom: 1px solid rgb(230, 230, 230);
 }
 
-.navigation-title {
-
-}
 </style>
