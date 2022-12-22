@@ -1,5 +1,5 @@
 <template>
- <article class="post-details-page-component">
+ <article class="post-page post">
    <header class="post-header">
      <div class="post-title">
        <h1>Post Title</h1>
@@ -55,8 +55,8 @@
 
 <script>
 import currentDate from '@/helpers/currentDate';
-import TheComment from '@/components/views/post/_PostDetails/TheComment/TheComment.vue';
-import CommentForm from '@/components/views/post/_PostDetails/CommentForm/CommentForm.vue';
+import TheComment from '@/components/views/_post-page/TheComment/index.vue';
+import CommentForm from '@/components/views/_post-page/CommentForm/index.vue';
 /**
  * @module components/views/post/_PostDetails/PostDetails.vue
  * @desc компонент детальной информации поста
@@ -65,7 +65,7 @@ import CommentForm from '@/components/views/post/_PostDetails/CommentForm/Commen
  */
 
 export default {
-  name: 'PostDetailsPage',
+  name: 'PostPage',
   components: {
     TheComment,
     CommentForm,
@@ -89,7 +89,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.post-details-page-component {
+.post {
   max-width: 600px;
   margin: 0 auto;
 }

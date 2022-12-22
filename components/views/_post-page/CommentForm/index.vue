@@ -4,7 +4,7 @@
       :rules="formRules"
       ref="form"
       @submit.native.prevent="onSubmit"
-      class="post-details-page-comment-form-component">
+      class="post-page-component">
       <h1>Добавить комментраий</h1>
       <el-form-item label="Ваше имя" prop="name">
         <el-input v-model.trim="formData.name" />
@@ -38,7 +38,7 @@
  * @vue-event  created - сообщаем родительскому компоненту что комментарий создан
  */
 export default {
-  name: 'PostDetailsPageCommentForm',
+  name: 'PostPage',
   data() {
     return {
       isLoading: false,

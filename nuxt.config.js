@@ -28,12 +28,7 @@ export default {
   plugins: [
     '@/plugins/globals',
   ],
-  components: {
-    dirs: [
-      '~/components',
-      '~/components/views',
-    ],
-  },
+  components: false,
   buildModules: [
   ],
   modules: [

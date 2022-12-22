@@ -1,21 +1,21 @@
 <template>
-  <nav class="navigation-layout-component">
+  <nav class="default-layout-component navigation">
     <h1 class="navigation-title">SSR Blog</h1>
   </nav>
 </template>
 
 <script>
 /**
- * @module components/views/layout/TheNavigation/TheNavigation.vue
+ * @module components/views/layout/default/TheNavigation/index.vue
  * @desc компонент навигации сайта
  */
 export default {
-  name: 'NavigationLayout',
+  name: 'defaultLayout',
 };
 </script>
 
 <style lang="scss" scoped>
-.navigation-layout-component {
+.navigation {
   display: flex;
   align-items: center;
   justify-content: center;

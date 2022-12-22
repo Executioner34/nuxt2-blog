@@ -1,5 +1,5 @@
 <template>
-  <el-card class="post-details-page-comment-component">
+  <el-card class="post-page-component comment">
     <div class="comment-header">
       <span>Person name {{ comment}}</span>
       <span><i class="el-icon-time"></i> {{ currentDate }}</span>
@@ -14,13 +14,13 @@
 import currentDate from '@/helpers/currentDate';
 
 /**
- * @module components/views/post/_PostDetails/TheComment/TheComment.vue
+ * @module components/views/post/_PostDetails/TheComment/index.vue
  * @desc компонент комментария на странице детальной информации поста
  * @vue-prop {String || Number} component - текст комментария
  * @vue-computed {String} currentDate - текущая дата и время
  */
 export default {
-  name: 'PostDetailsPageComment',
+  name: 'PostPage',
   props: {
     comment: {
       type: [String, Number],
@@ -36,7 +36,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.post-details-page-comment-component {
+.comment {
   margin-bottom: 16px;
 }
 

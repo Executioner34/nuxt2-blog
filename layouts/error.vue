@@ -1,5 +1,5 @@
 <template>
-  <div class="error-layout">
+  <div class="error-page">
     <div class="error-content">
       <h1 class="error-title">Ошибка 404</h1>
       <nuxt-link to="/">Вернуться на главную</nuxt-link>
@@ -13,7 +13,7 @@
  * @desc страница ошибки 404
  */
 export default {
-  name: 'ErrorLayout',
+  name: 'ErrorPage',
 };
 </script>
 

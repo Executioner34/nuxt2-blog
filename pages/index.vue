@@ -1,14 +1,15 @@
 <template>
- <el-row type="flex" justify="center">
-   <el-col :xs="24" :sm="18" :md="12" :lg="10" >
-      <IndexThePost v-for="post in 3" :key="post"/>
-   </el-col>
- </el-row>
+  <IndexPage/>
 </template>
 
 <script>
+import IndexPage from '@/components/views/index/index.vue';
+
 export default {
-  name: 'IndexPage',
+  name: 'HomePage',
+  components: {
+    IndexPage,
+  },
   head: {
     title: 'Главная',
   },

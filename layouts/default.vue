@@ -1,24 +1,18 @@
 <template>
-  <div>
-    <el-container>
-      <el-header>
-        <LayoutTheNavigation/>
-      </el-header>
-      <el-main>
-        <Nuxt/>
-      </el-main>
-      <el-footer/>
-    </el-container>
-  </div>
+  <DefaultLayout/>
 </template>
 
 <script>
+import DefaultLayout from '@/components/views/layout/default/index.vue';
 
 export default {
-  name: 'DefaultLayout',
+  name: 'defaultLayout',
+  components: {
+    DefaultLayout,
+  },
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 </style>
