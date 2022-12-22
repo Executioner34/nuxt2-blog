@@ -18,3 +18,13 @@ h1 {
 .x-text-center {
   text-align: center;
 }
+//Анимация смены страницы
+.page-enter-active,
+.page-leave-active {
+  transition: opacity .3s;
+}
+
+.page-enter,
+.page-leave-active {
+  opacity: 0;
+}
