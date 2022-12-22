@@ -32,6 +32,7 @@
        Magnam.</p>
    </main>
    <footer>
+     <CommentForm/>
      <div
        v-if="true"
        class="comments">
@@ -50,6 +51,7 @@
 <script>
 import currentDate from '@/helpers/currentDate';
 import TheComment from '@/components/views/post/_PostDetails/TheComment/TheComment.vue';
+import CommentForm from '@/components/views/post/_PostDetails/CommentForm/CommentForm.vue';
 /**
  * @module components/views/post/_PostDetails/PostDetails.vue
  * @desc компонент детальной информации поста
@@ -60,6 +62,7 @@ export default {
   name: 'PostDetailsPage',
   components: {
     TheComment,
+    CommentForm,
   },
   computed: {
     currentDate() {
