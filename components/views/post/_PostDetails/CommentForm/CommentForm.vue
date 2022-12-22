@@ -21,7 +21,9 @@
         <el-button
           type="primary"
           native-type="submit"
-          round>Добавить комментарий</el-button>
+          :loading="isLoading"
+          round
+        >Добавить комментарий</el-button>
       </el-form-item>
     </el-form>
 </template>
@@ -30,13 +32,16 @@
 /**
  * @module components/views/post/_PostDetails/CommentForm/CommentForm.vue
  * @desc компонент формы создания комментария для поста
+ * @vue-data {Boolean} isLoading - ход загрузки на сервер
  * @vue-data {Object} formData - данные полей формы
  * @vue-data {Object} formRules - валидация полей формы
+ * @vue-event  created - сообщаем родительскому компоненту что комментарий создан
  */
 export default {
   name: 'PostDetailsPageCommentForm',
   data() {
     return {
+      isLoading: false,
       formData: {
         name: '',
         text: '',
@@ -55,8 +60,21 @@ export default {
     onSubmit() {
       this.$refs.form.validate((valid) => {
         if (valid) {
-          // mock
-          console.log('Form is Valid');
+          this.isLoading = true;
+          const formData = {
+            name: this.formData.name,
+            text: this.formData.text,
+          };
+          try {
+            setTimeout(() => {
+              this.$message.success('Комментарий добавлен');
+              this.$emit('created');
+            }, 2000);
+          } catch (e) {
+            this.isLoading = false;
+            this.$message.error('Ошибка добавления комментария!');
+            console.log(e);
+          }
         }
       });
     },

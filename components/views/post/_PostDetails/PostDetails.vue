@@ -32,18 +32,23 @@
        Magnam.</p>
    </main>
    <footer>
-     <CommentForm/>
+     <CommentForm v-if="canAddComment" @created="createCommentHandler"/>
+
      <div
        v-if="true"
-       class="comments">
+       class="comments"
+     >
        <TheComment
          v-for="comment in 4"
          :key="comment"
-         :comment="comment" />
+         :comment="comment"
+       />
      </div>
     <div
       v-else
-      class="x-text-center">Комментариев нет</div>
+      class="x-text-center">Комментариев нет
+    </div>
+
    </footer>
  </article>
 </template>
@@ -55,6 +60,7 @@ import CommentForm from '@/components/views/post/_PostDetails/CommentForm/Commen
 /**
  * @module components/views/post/_PostDetails/PostDetails.vue
  * @desc компонент детальной информации поста
+ * @vue-data {Boolean} canAddComment - может ли пользователь оставлять комментарий
  * @vue-computed {String} currentDate - возвращает текущую дату в виде строки
  */
 
@@ -64,12 +70,21 @@ export default {
     TheComment,
     CommentForm,
   },
+  data() {
+    return {
+      canAddComment: true,
+    };
+  },
   computed: {
     currentDate() {
       return currentDate();
     },
   },
-
+  methods: {
+    createCommentHandler() {
+      this.canAddComment = false;
+    },
+  },
 };
 </script>
 
