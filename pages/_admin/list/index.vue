@@ -12,6 +12,7 @@ export default {
   name: 'AdminListPage',
   components: { ListPage },
   layout: 'admin',
+  middleware: ['admin-auth'],
 };
 </script>
 

@@ -12,6 +12,7 @@ export default {
   name: 'AdminCreatePage',
   components: { CreatePage },
   layout: 'admin',
+  middleware: ['admin-auth'],
 };
 </script>
 

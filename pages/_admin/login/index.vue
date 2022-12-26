@@ -12,6 +12,12 @@ export default {
   name: 'AdminLoginPage',
   components: { LoginPage },
   layout: 'empty',
+  mounted() {
+    const { message } = this.$route.query;
+    if (message === 'login') {
+      this.$message.info('Для начала войдите в систему');
+    }
+  },
 };
 </script>
 

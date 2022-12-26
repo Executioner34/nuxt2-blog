@@ -12,6 +12,7 @@ export default {
   name: 'AdminLogoutPage',
   components: { LogoutPage },
   layout: 'admin',
+  middleware: ['admin-auth'],
 };
 </script>
 
