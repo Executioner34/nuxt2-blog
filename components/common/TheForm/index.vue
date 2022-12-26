@@ -82,6 +82,7 @@ export default {
       type: String,
       required: false,
       default: 'comment',
+      validator: (value) => ['comment', 'login'].includes(value),
     },
   },
   computed: {
@@ -97,7 +98,7 @@ export default {
       // Валидация формы
       this.$refs.form.validate((valid) => {
         if (valid) {
-          this.$emit('onSubmit');
+          this.$emit('onSubmit', this.formData);
         }
       });
     },
