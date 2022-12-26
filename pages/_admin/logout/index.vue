@@ -1,18 +1,20 @@
 <template>
-<LogoutPage/>
+<div class=""></div>
 </template>
 
 <script>
-import LogoutPage from '@/components/views/_admin/logout/index.vue';
 /**
  * @module pages/_admin/logout/index.vue
  * @desc страница по маршруту /admin/logout
  */
 export default {
   name: 'AdminLogoutPage',
-  components: { LogoutPage },
   layout: 'admin',
   middleware: ['admin-auth'],
+  beforeCreate() {
+    this.$store.dispatch('auth/logout');
+    this.$router.push('/admin/login?message=logout');
+  },
 };
 </script>
 

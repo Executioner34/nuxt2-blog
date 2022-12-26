@@ -14,9 +14,11 @@ export default {
   layout: 'empty',
   mounted() {
     const { message } = this.$route.query;
-    if (message === 'login') {
-      this.$message.info('Для начала войдите в систему');
-    }
+    const infoMessages = {
+      login: 'Для начала войдите в систему',
+      logout: 'Вы успешно вышли из системы',
+    };
+    this.$message.info(infoMessages?.[message]);
   },
 };
 </script>
