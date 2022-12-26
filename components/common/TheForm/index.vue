@@ -82,12 +82,12 @@ export default {
       type: String,
       required: false,
       default: 'comment',
-      validator: (value) => ['comment', 'login'].includes(value),
+      validator: (value) => ['comment', 'login', 'create'].includes(value),
     },
   },
   computed: {
     isLogin() {
-      return (this.type === 'login');
+      return (this.type === 'login' || this.type === 'create');
     },
     typeInput() {
       return (this.isLogin ? 'password' : 'textarea');
