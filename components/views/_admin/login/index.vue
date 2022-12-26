@@ -49,11 +49,21 @@ export default {
     };
   },
   methods: {
-    submitForm(data) {
+    async submitForm({ first, second }) {
       this.buttonLoad = true;
-      setTimeout(() => {
+      try {
+        const formData = {
+          login: first,
+          password: second,
+        };
+
+        await this.$store.dispatch('auth/login', formData);
+        this.$router.push('/admin');
         this.buttonLoad = false;
-      }, 2000);
+      } catch (e) {
+        console.log(e);
+        this.buttonLoad = false;
+      }
     },
   },
 };
