@@ -4,6 +4,7 @@
 
 <script>
 import EmptyLayout from '@/components/views/layout/empty/index.vue';
+import { mapState } from 'vuex';
 /**
  * @module layouts/empty.vue
  * @desc пустая обёртка для логина в систему
@@ -11,6 +12,16 @@ import EmptyLayout from '@/components/views/layout/empty/index.vue';
 export default {
   name: 'AdminPage',
   components: { EmptyLayout },
+  computed: {
+    ...mapState({
+      error: 'error',
+    }),
+  },
+  watch: {
+    error(value) {
+      this.$message.error((value));
+    },
+  },
 };
 </script>
 

@@ -12,12 +12,13 @@ export const mutations = {
 };
 
 export const actions = {
-  async login({ dispatch }, dataForm) {
+  async login({ dispatch, commit }, dataForm) {
     try {
       const { data } = await this.$axios.get('./mock/auth.json');
       dispatch('setToken', data.token);
     } catch (e) {
-      console.log(e);
+      commit('SET_ERROR', e, { root: true });
+      throw e;
     }
   },
 
