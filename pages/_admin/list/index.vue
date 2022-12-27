@@ -1,5 +1,5 @@
 <template>
-  <ListPage :data="posts"/>
+  <ListPage :initialData="posts"/>
 </template>
 
 <script>
@@ -7,6 +7,7 @@ import ListPage from '@/components/views/_admin/list/index.vue';
 /**
  * @module pages/_admin/list/index.vue
  * @desc страница по маршруту /admin/list
+ * @vue-data {Array} posts - Список постов получаемый с сервера
  */
 export default {
   name: 'AdminListPage',
