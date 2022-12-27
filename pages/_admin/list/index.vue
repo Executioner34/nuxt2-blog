@@ -1,5 +1,5 @@
 <template>
-  <ListPage/>
+  <ListPage :data="posts"/>
 </template>
 
 <script>
@@ -13,6 +13,10 @@ export default {
   components: { ListPage },
   layout: 'admin',
   middleware: ['admin-auth'],
+  async asyncData({ store }) {
+    const posts = await store.dispatch('post/fetchAdminPosts');
+    return { posts };
+  },
 };
 </script>
 

@@ -15,7 +15,7 @@ export default {
   },
 
   loading: {
-    color: '#fff',
+    color: '#409EFF',
   },
   css: [
     'normalize.css/normalize.css',
