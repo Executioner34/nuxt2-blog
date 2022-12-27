@@ -16,6 +16,12 @@ export const actions = {
       commit('SET_ERROR', e, { root: true });
     }
   },
+  async create({}, { title, text }) {
+    // Создаем пост на сервере
+    setTimeout(() => {
+      console.log('Пост создан:', title);
+    }, 1000);
+  },
   async remove({}, id) {
   // Удаляем пост на сервере
     setTimeout(() => {
