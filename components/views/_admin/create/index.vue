@@ -31,6 +31,18 @@
           <vue-markdown>{{ formData.text}}</vue-markdown>
         </div>
       </el-dialog>
+      <el-upload
+        class="create-upload"
+        drag
+        action="https://jsonplaceholder.typicode.com/posts/"
+        :on-change="handleImageChange"
+        :auto-upload="false"
+        ref="upload"
+      >
+        <i class="el-icon-upload"></i>
+        <div class="el-upload__text">Перетащите картинку <em>или нажмите</em></div>
+        <div class="el-upload__tip" slot="tip">файлы с расширением jpg/png</div>
+      </el-upload>
       <el-form-item>
         <el-button
           type="primary"
@@ -51,6 +63,7 @@
  * @desc страница создания поста
  * @vue-data {Boolean} loading - состояние кнопки
  * @vue-data {Boolean} isPreviewDialog - состояние компонента el-dialog
+ * @vue-data {Object} file - загружаемый файл картинки
  * @vue-data {Object} formData -  данные в форме для создания поста
  * @vue-data {Object} formRules - валидация для данных в форме
  */
@@ -60,6 +73,7 @@ export default {
     return {
       loading: false,
       isPreviewDialog: false,
+      file: {},
       formData: {
         title: '',
         text: '',
@@ -77,22 +91,30 @@ export default {
   methods: {
     onSubmit() {
       this.$refs.form.validate(async (valid) => {
-        if (valid) {
+        if (valid && ('size' in this.file)) {
           this.loading = true;
           const formData = {
             title: this.formData.title,
             text: this.formData.text,
+            image: this.file,
           };
           try {
             await this.$store.dispatch('post/create', formData);
             this.$message.success('Пост создан');
             this.formData.text = '';
             this.formData.title = '';
+            this.file = {};
+            this.$refs.upload.clearFiles();
           } catch (e) { } finally {
             this.loading = false;
           }
+          return true;
         }
+        this.$message.warning('Форма не валидна');
       });
+    },
+    handleImageChange(file, fileList) {
+      this.file = file.raw;
     },
     openPreview() {
       this.isPreviewDialog = true;
@@ -107,6 +129,10 @@ export default {
 }
 
 .create-preview-btn {
+  margin-bottom: 32px;
+}
+
+.create-upload {
   margin-bottom: 32px;
 }
 </style>
