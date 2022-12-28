@@ -49,6 +49,9 @@
  * @module components/views/_admin/post/index.vue
  * @desc страница отображения поста с админ панели
  * @vue-prop {Object} data - данные поста
+ * @vue-data {Boolean} loading - состояние кнопки
+ * @vue-data {Object} formData - введенный текст для поста
+ * @vue-data {Object} formRules - валидация для введенного текста
  */
 export default {
   name: 'PostPage',

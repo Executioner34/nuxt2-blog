@@ -49,6 +49,10 @@
 /**
  * @module components/views/_admin/create/index.vue
  * @desc страница создания поста
+ * @vue-data {Boolean} loading - состояние кнопки
+ * @vue-data {Boolean} isPreviewDialog - состояние компонента el-dialog
+ * @vue-data {Object} formData -  данные в форме для создания поста
+ * @vue-data {Object} formRules - валидация для данных в форме
  */
 export default {
   name: 'CreatePage',
