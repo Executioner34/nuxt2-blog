@@ -2,7 +2,7 @@
   <el-card
     shadow="hover"
     :body-style="{ padding: 0 }"
-    class="the-post-component"
+    class="the-card-component"
   >
     <div slot="header" class="header">
       <h3>{{ postData.title }}</h3>
@@ -28,13 +28,13 @@
 <script>
 import AppIcon from '@/components/general/AppIcon/index.vue';
 /**
- * @module components/views/index/ThePost/index.vue
- * @desc компонент поста
+ * @module components/views/index/TheCard/index.vue
+ * @desc карточка поста
  * @vue-props {Object} postData - данные для поста
  * @vue-computed {String} formatDate - форматирует дату в строку в необходимый формат
  */
 export default {
-  name: 'ThePost',
+  name: 'TheCard',
   components: {
     AppIcon,
   },
@@ -58,7 +58,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.the-post-component {
+.the-card-component {
   margin-bottom: 20px;
 
   .header {

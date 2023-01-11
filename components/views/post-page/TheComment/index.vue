@@ -2,7 +2,7 @@
   <el-card class="the-comment-component">
     <div class="top">
       <span>{{ username }}</span>
-      <span><app-icon icon="el-icon-time" /> {{ date }}</span>
+      <span><app-icon icon="el-icon-time" /> {{ formatDate }}</span>
     </div>
     <div class="text">
       {{ comment }}
@@ -14,10 +14,12 @@
 import AppIcon from '@/components/general/AppIcon/index.vue';
 
 /**
- * @module components/views/post/_PostDetails/TheComment/index.vue
+ * @module components/views/post-page/TheComment/index.vue
  * @desc компонент комментария на странице детальной информации поста
  * @vue-prop {String} comment - текст комментария
- * @vue-computed {String} currentDate - текущая дата и время
+ * @vue-prop {String} username - автор комментария
+ * @vue-prop {String} date - дата создания комментария в формате YYYY-mm-dd
+ * @vue-computed {String} formatDate - форматирует дату в строку в необходимый формат
  */
 export default {
   name: 'TheComment',
@@ -27,7 +29,8 @@ export default {
   props: {
     comment: {
       type: String,
-      required: true,
+      required: false,
+      default: 'Lorem ipsum dolor sit amet.',
     },
     username: {
       type: String,
@@ -37,11 +40,13 @@ export default {
     date: {
       type: String,
       required: false,
-      default: () => new Date().toLocaleDateString(),
+      default: () => new Date().toDateString(),
     },
   },
   computed: {
-
+    formatDate() {
+      return new Date(this.date).toLocaleString();
+    },
   },
 };
 </script>
@@ -49,6 +54,7 @@ export default {
 <style lang="scss" scoped>
 .the-comment-component {
   margin-bottom: 16px;
+
   .header {
     display: flex;
     justify-content: space-between;

@@ -1,7 +1,7 @@
 <template>
-  <div class="error-page">
-    <div class="error-content">
-      <h1 class="error-title">Ошибка 404</h1>
+  <div class="error-page-component">
+    <div class="content">
+      <h2 class="title">Ошибка 404</h2>
       <nuxt-link to="/">Вернуться на главную</nuxt-link>
     </div>
   </div>
@@ -18,22 +18,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.error-layout {
+.error-page-component {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-}
 
-.error-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 64px;
-}
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 64px;
+  }
 
-.error-title {
-  color: rgb(145, 6, 6);
-  margin-bottom: 16px;
+  .title {
+    color: rgb(145, 6, 6);
+    margin-bottom: 16px;
+  }
 }
 </style>
