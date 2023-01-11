@@ -1,0 +1,55 @@
+[
+  {
+    "title": "Post 1",
+    "date": "2014-02-19",
+    "views": 22,
+    "comments": [
+      {
+        "author": "username1",
+        "text": "Это первый комментарий",
+        "date": "2014-02-20"
+      },
+      {
+        "author": "username2",
+        "text": "Это второй комментарий",
+        "date": "2014-02-22"
+      }
+    ],
+    "image": "https://traveller-eu.ru/sites/default/files/inline-images/2017-09-22%2009.50.03%202-800x533.jpg",
+    "_id": "222"
+  },
+  {
+    "title": "Post 2",
+    "date": "2016-08-19",
+    "views": 45,
+    "comments": [
+      {
+        "author": "username3",
+        "text": "Это первый комментарий",
+        "date": "2016-08-22"
+      },
+      {
+        "author": "username4",
+        "text": "Это второй комментарий",
+        "date": "2016-08-23"
+      },
+      {
+        "author": "username5",
+        "text": "Это третий комментарий",
+        "date": "2016-08-25"
+      }
+    ],
+    "image": "https://planetofhotels.com/guide/sites/default/files/styles/paragraph__live_banner__lb_image__1880bp/public/live_banner/London-1.jpg",
+    "_id": "333"
+  },
+  {
+    "title": "Post 3",
+    "date": "2014-02-19",
+    "views": 33,
+    "comments": [
+
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Moscow-City2015.jpg/405px-Moscow-City2015.jpg",
+    "_id": "322"
+  }
+]
