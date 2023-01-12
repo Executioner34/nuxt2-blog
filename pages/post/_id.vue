@@ -1,6 +1,6 @@
 <template>
   <article class="post-id-page-component">
-    <div class="top">
+    <div class="heading">
       <div class="title">
         <h2>{{ post.title}}</h2>
         <nuxt-link to="/">
@@ -17,7 +17,7 @@
         <img :src="post.image" alt="post image" >
       </div>
     </div>
-    <div class="middle">
+    <div class="text-content">
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         At dolores nihil nisi nobis, odio pariatur quo quod sed soluta
         ut vel vero voluptate voluptates?
@@ -31,7 +31,6 @@
         ut vel vero voluptate voluptates?
         Magnam.</p>
     </div>
-    <div class="bottom">
       <the-form
         v-if="canAddComment"
         :form-data="formData"
@@ -44,25 +43,27 @@
         @onSubmit="createCommentHandler"
       />
 
-      <div
+      <ul
         v-if="post.comments.length"
         class="comments"
       >
-        <the-comment
-          v-for="(comment) in post.comments"
-          :key="comment.author"
-          :comment="comment.text"
-          :username="comment.author"
-          :date="comment.date"
-        />
-      </div>
+        <li v-for="(comment) in post.comments"
+            :key="comment.author"
+            class="comment"
+        >
+          <the-comment
+            :comment="comment.text"
+            :username="comment.author"
+            :date="comment.date"
+          />
+        </li>
+      </ul>
 
-      <div
+      <span
         v-else
         class="x-text-center">Комментариев нет
-      </div>
+      </span>
 
-    </div>
   </article>
 </template>
 
@@ -73,7 +74,6 @@ import AppIcon from '@/components/general/AppIcon/index.vue';
 /**
  * @module pages/post/_id.vue
  * @desc страница по пути /post/:id
- * @vue-data {Object} post - данные поста с сервера
  * @vue-data {Boolean} canAddComment - к каждому посту пользователь может
  * оставлять только один коммент
  * @vue-data {Object} formData - модель для инпутов комментария
@@ -81,6 +81,7 @@ import AppIcon from '@/components/general/AppIcon/index.vue';
  * @vue-data {Object} labelsInputs - массив для лайблов инпутов комментария
  * @vue-data {Boolean} isLoading - булевое значение состояние загрузки комментария
  * для кнопки отправки коммента
+ * @vue-computed {Object} post - данные поста с сервера
  * @vue-computed {String} formatDate - возвращает дату в нужном формате
  */
 export default {
@@ -114,14 +115,18 @@ export default {
   },
   async asyncData({ store, params, error }) {
     try {
-      const post = await store.dispatch('posts/getPost', params.id);
-      if (!post) return error({ message: `post ${post}`, statusCode: 404 });
-      return { post };
+      await store.dispatch('posts/getPost', params.id);
+      // Проверяем загружен ли в сторе текущий пост. Если нет, то выбрасываем ошибку
+      if (!store.state.posts.currentPost) return error({ message: 'post not found', statusCode: 404 });
+      return true;
     } catch (e) {
       return error({ message: e.message, statusCode: e.response.status });
     }
   },
   computed: {
+    post() {
+      return this.$store.state.posts.currentPost;
+    },
     formatDate() {
       return new Date(this.post.date).toLocaleDateString();
     },
@@ -149,7 +154,7 @@ export default {
   max-width: 600px;
   margin: 0 auto;
 
-  .top {
+  .heading {
     margin-bottom: 24px;
   }
 
@@ -172,10 +177,13 @@ export default {
     height: auto;
   }
 
-  .middle {
+  .text-content {
     margin-bottom: 32px;
   }
 
+  .comment:not(:last-child) {
+    margin-bottom: 16px;
+  }
 }
 
 </style>

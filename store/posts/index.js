@@ -1,10 +1,14 @@
 export const state = () => ({
   posts: [],
+  currentPost: {},
 });
 
 export const mutations = {
   SET_POSTS(state, payload) {
     state.posts = payload;
+  },
+  SET_POST(state, payload) {
+    state.currentPost = payload;
   },
 };
 
@@ -17,10 +21,11 @@ export const actions = {
       console.log(e);
     }
   },
-  async getPost({}, id) {
+  async getPost({ commit }, id) {
     try {
       const { data } = await this.$axios.get('/mock/posts.json');
-      return data.find((post) => post._id === id);
+      const post = data.find((post) => post._id === id);
+      commit('SET_POST', post);
     } catch (e) {
       console.log(e);
     }
