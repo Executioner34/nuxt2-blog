@@ -59,8 +59,6 @@ export default {
 
 <style lang="scss" scoped>
 .the-card-component {
-  margin-bottom: 20px;
-
   .header {
     display: flex;
     justify-content: space-between;

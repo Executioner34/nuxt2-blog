@@ -1,14 +1,18 @@
 <template>
   <el-row type="flex" justify="center" class="index-page-component">
     <el-col :xs="24" :sm="18" :md="12" :lg="10" >
-      <the-card v-for="post in posts" :key="post._id" :post-data="post"/>
+      <ul>
+        <li v-for="post in posts" :key="post._id" class="card">
+          <the-card :post-data="post"
+          />
+        </li>
+      </ul>
     </el-col>
   </el-row>
 </template>
 
 <script>
 import TheCard from '@/components/views/index/TheCard/index.vue';
-import { mapState } from 'vuex';
 /**
  * @module pages/index.vue
  * @desc главная страница
@@ -31,7 +35,17 @@ export default {
     }
   },
   computed: {
-    ...mapState('posts', ['posts']),
+    posts() {
+      return this.$store.state.posts.posts;
+    },
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.index-page-component {
+  .card:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}
+</style>
