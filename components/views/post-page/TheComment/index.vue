@@ -1,6 +1,6 @@
 <template>
   <el-card class="the-comment-component">
-    <div class="top">
+    <div class="heading">
       <span>{{ username }}</span>
       <span><app-icon icon="el-icon-time" /> {{ formatDate }}</span>
     </div>
@@ -53,9 +53,7 @@ export default {
 
 <style lang="scss" scoped>
 .the-comment-component {
-  margin-bottom: 16px;
-
-  .header {
+  .heading {
     display: flex;
     justify-content: space-between;
     margin-bottom: 8px;
