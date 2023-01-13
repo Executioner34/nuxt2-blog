@@ -1,3 +1,5 @@
+import posts from '@/mock/posts.json';
+
 export const state = () => ({
   posts: [],
   currentPost: {},
@@ -15,7 +17,7 @@ export const mutations = {
 export const actions = {
   async getPosts({ commit }) {
     try {
-      const { data } = await this.$axios.get('/mock/posts.json');
+      const data = posts;
       commit('SET_POSTS', data);
     } catch (e) {
       console.log(e);
@@ -23,8 +25,7 @@ export const actions = {
   },
   async getPost({ commit }, id) {
     try {
-      const { data } = await this.$axios.get('/mock/posts.json');
-      const post = data.find((post) => post._id === id);
+      const post = posts.find((post) => post._id === id);
       commit('SET_POST', post);
     } catch (e) {
       console.log(e);
