@@ -4,15 +4,16 @@
     :rules="formRules"
     ref="form"
     @submit.native.prevent="onSubmitEvent"
-    class="post-page-component">
-    <h1>{{ title }}</h1>
+    class="the-form-component">
+    <h2>{{ title }}</h2>
     <el-form-item :label="labelInput[0]" prop="first">
       <el-input v-model.trim="formData.first" />
     </el-form-item>
     <el-form-item
       :label="labelInput[1]"
       prop="second"
-      :style="{marginBottom: isLogin ? '32px' : '16px'}">
+      class="input"
+      :class="classInput">
       <el-input
         v-model.trim="formData.second"
         :type="typeInput"
@@ -35,7 +36,7 @@
 <script>
 /**
  * @module components/common/TheForm/index.vue
- * @desc форма с двуми полями и кнопкой
+ * @desc форма с двумя полями и кнопкой
  * @vue-prop {Object} formData - объект с полями first и second для инпутов формы
  * @vue-prop {Object} formRules - объект для валидации инпутов формы
  * @vue-prop {String} title - заглавный текст страницы
@@ -46,6 +47,7 @@
  * @vue-computed {Boolean} isLogin - на основе props.type определяет тип
  * @vue-computed {String} typeInput - на основе isLogin возвращает строку для
  * определения второго инпута
+ * @vue-computed {String} classInput - на основе isLogin возращает строку для модификатора класса
  * @vue-event {Void} onSubmit - оповещает родителя о клике на кнопку
  */
 export default {
@@ -66,7 +68,8 @@ export default {
     },
     labelInput: {
       type: Array,
-      required: true,
+      required: false,
+      default: () => (['First', 'Second']),
     },
     buttonText: {
       type: String,
@@ -92,6 +95,9 @@ export default {
     typeInput() {
       return (this.isLogin ? 'password' : 'textarea');
     },
+    classInput() {
+      return this.isLogin ? 'login' : '';
+    },
   },
   methods: {
     onSubmitEvent() {
@@ -107,4 +113,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.the-form-component {
+  .input {
+    margin-bottom: 16px;
+    &.login {
+      margin-bottom: 32px;
+    }
+  }
+}
 </style>
