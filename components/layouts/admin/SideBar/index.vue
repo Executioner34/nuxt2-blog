@@ -2,42 +2,45 @@
   <el-menu
     router
     :default-active="$route.path"
-    :style="{height: '100%'}">
+    class="side-bar-component"
+  >
     <el-menu-item index="/admin">
-      <i class="el-icon-menu"></i>
+      <app-icon icon="el-icon-menu" />
       <span>Аналитика</span>
     </el-menu-item>
     <el-menu-item index="/admin/create">
-      <i class="el-icon-edit-outline"></i>
+      <app-icon icon="el-icon-edit-outline" />
       <span>Создать</span>
     </el-menu-item>
     <el-menu-item index="/admin/list">
-      <i class="el-icon-tickets"></i>
+      <app-icon icon="el-icon-tickets" />
       <span>Посты</span>
     </el-menu-item>
     <el-menu-item index="/admin/user">
-      <i class="el-icon-service"></i>
+      <app-icon icon="el-icon-service" />
       <span>Пользователи</span>
     </el-menu-item>
     <el-menu-item index="/admin/logout">
-      <i class="el-icon-setting"></i>
+      <app-icon icon="el-icon-setting" />
       <span>Выйти</span>
     </el-menu-item>
   </el-menu>
 </template>
 
 <script>
+import AppIcon from '@/components/general/AppIcon/index.vue';
 /**
- * @module components/views/layout/admin/SideBar/index.vue
- * @desc component_description
- * @vue-prop {type} name - desc
- * @vue-data {type} name - desc
- * @vue-computed {type} name - desc
+ * @module components/layouts/admin/SideBar/index.vue
+ * @desc боковая панель страниц администратора
  */
 export default {
-  name: 'AdminLayout',
+  name: 'SideBar',
+  components: { AppIcon },
 };
 </script>
 
 <style lang="scss" scoped>
+.side-bar-component {
+  height: 100%;
+}
 </style>

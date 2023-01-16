@@ -1,6 +1,12 @@
+import data from '@/mock/auth.json';
+
 export const state = () => ({
   token: '',
 });
+
+export const getters = {
+  isAuthenticated: (state) => !!state.token,
+};
 
 export const mutations = {
   SET_TOKEN(state, token) {
@@ -12,33 +18,18 @@ export const mutations = {
 };
 
 export const actions = {
-  async login({ dispatch, commit }, dataForm) {
+  async login({ commit }, dataForm) {
     try {
-      const { data } = await this.$axios.get('./mock/auth.json');
-      dispatch('setToken', data.token);
+      const { token } = data;
+      commit('SET_TOKEN', token);
     } catch (e) {
       commit('SET_ERROR', e, { root: true });
       throw e;
     }
   },
 
-  async createUser({ commit }, dataForm) {
-    try {
-      console.log(dataForm);
-    } catch (e) {
-      commit('SET_ERROR', e, { root: true });
-    }
-  },
-
-  setToken({ commit }, token) {
-    commit('SET_TOKEN', token);
-  },
-
   logout({ commit }) {
     commit('CLEAR_TOKEN');
   },
-};
 
-export const getters = {
-  isAuthenticated: (state) => !!state.token,
 };

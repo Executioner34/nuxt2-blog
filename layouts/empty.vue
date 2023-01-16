@@ -1,21 +1,20 @@
 <template>
-  <EmptyLayout/>
+  <main class="empty-layout-component">
+    <nuxt/>
+  </main>
 </template>
 
 <script>
-import EmptyLayout from '@/components/views/layout/empty/index.vue';
-import { mapState } from 'vuex';
 /**
  * @module layouts/empty.vue
  * @desc пустая обёртка для логина в систему
  */
 export default {
-  name: 'AdminPage',
-  components: { EmptyLayout },
+  name: 'EmptyLayout',
   computed: {
-    ...mapState({
-      error: 'error',
-    }),
+    error() {
+      return this.$store.state.error;
+    },
   },
   watch: {
     error(value) {
@@ -26,5 +25,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.empty-layout-component {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 64px;
+}
 </style>

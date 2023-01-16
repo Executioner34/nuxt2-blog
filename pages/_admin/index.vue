@@ -1,21 +1,17 @@
 <template>
-<AdminPage/>
+  <div class="admin-page-component">
+    <h2>Welcome to Admin Page</h2>
+  </div>
 </template>
 
 <script>
-import AdminPage from '@/components/views/_admin/index.vue';
 /**
  * @module pages/_admin/index.vue
  * @desc страница по маршруту /admin
  */
 export default {
-  name: 'IndexAdminPage',
+  name: 'AdminPage',
   layout: 'admin',
-  components: { AdminPage },
   middleware: ['admin-auth'],
 };
 </script>
-
-<style lang="scss" scoped>
-
-</style>
