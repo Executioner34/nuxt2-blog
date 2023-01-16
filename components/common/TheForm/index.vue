@@ -15,12 +15,20 @@
       class="input"
       :class="classInput">
       <el-input
-        v-model.trim="formData.second"
+        v-model="formData.second"
         :type="typeInput"
         resize="none"
-        :rows="2"
+        :rows="rowsInInput"
       />
     </el-form-item>
+    <template v-if="isCreatePost">
+      <the-preview :text="formData.second" class="preview"/>
+      <the-upload
+        class="upload"
+        @update="updateFile"
+        ref="upload"
+      />
+    </template>
     <el-form-item>
       <el-button
         type="primary"
@@ -34,6 +42,9 @@
 </template>
 
 <script>
+import ThePreview from '@/components/common/TheForm/ThePreview/index.vue';
+import TheUpload from '@/components/common/TheUpload/index.vue';
+
 /**
  * @module components/common/TheForm/index.vue
  * @desc форма с двумя полями и кнопкой
@@ -43,15 +54,24 @@
  * @vue-prop {Array} labelInput - массив строк для лэйблов инпутов
  * @vue-prop {String} buttonText - текст для  кнопки формы
  * @vue-prop {Boolean} isLoading - для состояния кнопки
- * @vue-prop {String} type - тип формы.
+ * @vue-prop {String} type - тип компонента.
+ * @vue-data {Object} file - объект файла
  * @vue-computed {Boolean} isLogin - на основе props.type определяет тип
+ * @vue-computed {Boolean} isCreatePost - на основе props.type определяет тип
  * @vue-computed {String} typeInput - на основе isLogin возвращает строку для
  * определения второго инпута
+ * @vue-computed {Number} rowsInInput - возвращает число строк на основе props.type
  * @vue-computed {String} classInput - на основе isLogin возращает строку для модификатора класса
  * @vue-event {Void} onSubmit - оповещает родителя о клике на кнопку
  */
 export default {
   name: 'TheForm',
+  components: { TheUpload, ThePreview },
+  data() {
+    return {
+      file: {},
+    };
+  },
   props: {
     formData: {
       type: Object,
@@ -85,12 +105,15 @@ export default {
       type: String,
       required: false,
       default: 'comment',
-      validator: (value) => ['comment', 'login', 'create'].includes(value),
+      validator: (value) => ['comment', 'login', 'createUser', 'createPost'].includes(value),
     },
   },
   computed: {
     isLogin() {
-      return (this.type === 'login' || this.type === 'create');
+      return (this.type === 'login' || this.type === 'createUser');
+    },
+    isCreatePost() {
+      return this.type === 'createPost';
     },
     typeInput() {
       return (this.isLogin ? 'password' : 'textarea');
@@ -98,14 +121,29 @@ export default {
     classInput() {
       return this.isLogin ? 'login' : '';
     },
+    rowsInInput() {
+      return this.isCreatePost ? 10 : 2;
+    },
   },
   methods: {
+    updateFile(file) {
+      this.file = file;
+    },
     onSubmitEvent() {
       // Валидация формы
       this.$refs.form.validate((valid) => {
+        const isValidFormAndUpload = this.isCreatePost && (valid && 'size' in this.file);
+        if (isValidFormAndUpload) {
+          this.$emit('onSubmit', { ...this.formData, file: this.file });
+          this.file = {};
+          this.$refs.upload.$refs.upload.clearFiles();
+          return;
+        }
         if (valid) {
           this.$emit('onSubmit', this.formData);
+          return;
         }
+        this.$message.warning('Форма не валидна');
       });
     },
   },
@@ -119,6 +157,11 @@ export default {
     &.login {
       margin-bottom: 32px;
     }
+  }
+
+  .upload,
+  .preview {
+    margin-bottom: 32px;
   }
 }
 </style>
