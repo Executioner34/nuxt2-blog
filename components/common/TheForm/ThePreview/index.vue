@@ -3,8 +3,8 @@
     <el-button
       type="success"
       plain
-      @click="openPreview"
       class="btn"
+      @click="openPreview"
     >
       Предпросмотр
     </el-button>

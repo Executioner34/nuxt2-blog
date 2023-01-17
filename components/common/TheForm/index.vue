@@ -3,8 +3,9 @@
     :model="formData"
     :rules="formRules"
     ref="form"
+    class="the-form-component"
     @submit.native.prevent="onSubmitEvent"
-    class="the-form-component">
+  >
     <h2>{{ title }}</h2>
     <el-form-item :label="labelInput[0]" prop="first">
       <el-input v-model.trim="formData.first" />
@@ -24,9 +25,9 @@
     <template v-if="isCreatePost">
       <the-preview :text="formData.second" class="preview"/>
       <the-upload
+        ref="upload"
         class="upload"
         @update="updateFile"
-        ref="upload"
       />
     </template>
     <el-form-item>
@@ -66,7 +67,10 @@ import TheUpload from '@/components/common/TheUpload/index.vue';
  */
 export default {
   name: 'TheForm',
-  components: { TheUpload, ThePreview },
+  components: {
+    TheUpload,
+    ThePreview,
+  },
   data() {
     return {
       file: {},
@@ -110,13 +114,13 @@ export default {
   },
   computed: {
     isLogin() {
-      return (this.type === 'login' || this.type === 'createUser');
+      return this.type === 'login' || this.type === 'createUser';
     },
     isCreatePost() {
       return this.type === 'createPost';
     },
     typeInput() {
-      return (this.isLogin ? 'password' : 'textarea');
+      return this.isLogin ? 'password' : 'textarea';
     },
     classInput() {
       return this.isLogin ? 'login' : '';

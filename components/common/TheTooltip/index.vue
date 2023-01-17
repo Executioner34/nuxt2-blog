@@ -8,8 +8,8 @@
     <el-button
       :icon="buttonIcon"
       :type="buttonType"
-      @click="eventClick"
       circle
+      @click="eventClick"
     />
   </el-tooltip>
 </template>

@@ -19,7 +19,9 @@ import SideBar from '@/components/layouts/admin/SideBar/index.vue';
  */
 export default {
   name: 'AdminLayout',
-  components: { SideBar },
+  components: {
+    SideBar,
+  },
 };
 </script>
 

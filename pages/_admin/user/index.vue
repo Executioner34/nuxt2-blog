@@ -5,10 +5,10 @@
       :form-rules="formRules"
       :form-data="formData"
       :is-loading="buttonLoad"
-      @onSubmit="submitForm"
       title="Создать пользователя"
       button-text="Создать"
       type="createUser"
+      @onSubmit="submitForm"
     />
   </div>
 </template>
@@ -25,7 +25,9 @@ import TheForm from '@/components/common/TheForm/index.vue';
  */
 export default {
   name: 'UserPage',
-  components: { TheForm },
+  components: {
+    TheForm,
+  },
   layout: 'admin',
   middleware: ['admin-auth'],
   data() {

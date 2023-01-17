@@ -2,10 +2,10 @@
     <el-upload
       drag
       action="mock-link"
-      :on-change="handleFileChange"
       :auto-upload="false"
       ref="upload"
       class="the-upload-component"
+      :on-change="handleFileChange"
     >
       <app-icon icon="el-icon-upload" />
       <div class="el-upload__text">Перетащите картинку <em>или нажмите</em></div>

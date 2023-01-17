@@ -5,10 +5,10 @@
       :form-rules="formRules"
       :form-data="formData"
       :is-loading="loading"
-      @onSubmit="onSubmitForm"
       title="Создать новый пост"
       button-text="Создать пост"
       type="createPost"
+      @onSubmit="onSubmitForm"
     />
   </div>
 </template>
@@ -24,7 +24,9 @@ import TheForm from '@/components/common/TheForm/index.vue';
  */
 export default {
   name: 'CreatePage',
-  components: { TheForm },
+  components: {
+    TheForm,
+  },
   layout: 'admin',
   middleware: ['admin-auth'],
   data() {

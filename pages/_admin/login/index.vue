@@ -8,10 +8,10 @@
       :form-rules="formRules"
       :label-input="inputsTitle"
       :isLoading="buttonLoad"
-      @onSubmit="submitForm"
       buttonText="Войти"
       title="Авторизация"
       type="login"
+      @onSubmit="submitForm"
     />
   </el-card>
 </template>

@@ -4,25 +4,9 @@
     :default-active="$route.path"
     class="side-bar-component"
   >
-    <el-menu-item index="/admin">
-      <app-icon icon="el-icon-menu" />
-      <span>Аналитика</span>
-    </el-menu-item>
-    <el-menu-item index="/admin/create">
-      <app-icon icon="el-icon-edit-outline" />
-      <span>Создать</span>
-    </el-menu-item>
-    <el-menu-item index="/admin/list">
-      <app-icon icon="el-icon-tickets" />
-      <span>Посты</span>
-    </el-menu-item>
-    <el-menu-item index="/admin/user">
-      <app-icon icon="el-icon-service" />
-      <span>Пользователи</span>
-    </el-menu-item>
-    <el-menu-item index="/admin/logout">
-      <app-icon icon="el-icon-setting" />
-      <span>Выйти</span>
+    <el-menu-item v-for="item in menuItems" :key="item.name" :index="item.link">
+      <app-icon :icon="item.icon" />
+      <span>{{ item.name }}</span>
     </el-menu-item>
   </el-menu>
 </template>
@@ -32,10 +16,44 @@ import AppIcon from '@/components/general/AppIcon/index.vue';
 /**
  * @module components/layouts/admin/SideBar/index.vue
  * @desc боковая панель страниц администратора
+ * @vue-data {Array} menuItems - массив объектов элементов меню
  */
 export default {
   name: 'SideBar',
-  components: { AppIcon },
+  components: {
+    AppIcon,
+  },
+  data() {
+    return {
+      menuItems: [
+        {
+          name: 'Аналитика',
+          icon: 'el-icon-menu',
+          link: '/admin',
+        },
+        {
+          name: 'Создать',
+          icon: 'el-icon-edit-outline',
+          link: '/admin/create',
+        },
+        {
+          name: 'Посты',
+          icon: 'el-icon-tickets',
+          link: '/admin/list',
+        },
+        {
+          name: 'Пользователи',
+          icon: 'el-icon-service',
+          link: '/admin/user',
+        },
+        {
+          name: 'Выйти',
+          icon: 'el-icon-setting',
+          link: '/admin/logout',
+        },
+      ],
+    };
+  },
 };
 </script>
 

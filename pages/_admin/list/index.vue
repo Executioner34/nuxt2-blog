@@ -53,7 +53,10 @@ import TheTooltip from '@/components/common/TheTooltip/index.vue';
  */
 export default {
   name: 'ListPage',
-  components: { TheTooltip, AppIcon },
+  components: {
+    TheTooltip,
+    AppIcon,
+  },
   layout: 'admin',
   middleware: ['admin-auth'],
   async asyncData({ store }) {
